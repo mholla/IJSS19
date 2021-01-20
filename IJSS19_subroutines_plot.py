@@ -204,26 +204,26 @@ def heat_maps(figname, betas_m, betas_p, thresh_strains, thresh_wavelengths):
 
     fig = plt.figure(2, figsize=(6, 6))  # default is (8,6)
     ax = fig.add_subplot(111, aspect='equal')
-    ax.contourf(betas_m, betas_p, thresh_strains, 20, cmap='jet', vmax=1., vmin=0., interpolation='none')
+    ax.contourf(betas_m, betas_p, thresh_strains, 20, cmap=plt.get_cmap('jet'), vmax=1., vmin=0., interpolation='none')
     ax.axvline(x=1, color='w', linewidth=4)
     ax.axhline(y=1, color='w', linewidth=4)
     ax.plot([0., 2.], [0., 2.], color='k', linewidth=4)
     ax.axis([0., 2., 0., 2.])
-    plt.savefig('{figname}A.png'.format(figname=figname))
+    plt.savefig('{figname}A.pdf'.format(figname=figname))
 
     fig = plt.figure(1, figsize=(6, 6))  # default is (8,6)
     ax = fig.add_subplot(111, aspect='equal')
-    ax.contourf(betas_m, betas_p, thresh_wavelengths, 20, cmap='jet', vmax=100., vmin=0., interpolation='none')
+    ax.contourf(betas_m, betas_p, thresh_wavelengths, 20, cmap=plt.get_cmap('jet'), vmax=100., vmin=0., interpolation='none')
     ax.axvline(x=1, color='w', linewidth=4)
     ax.axhline(y=1, color='w', linewidth=4)
     ax.plot([0., 2.], [0., 2.], color='k', linewidth=4)
     ax.axis([0., 2., 0., 2.])
-    plt.savefig('{figname}B.png'.format(figname=figname))
+    plt.savefig('{figname}B.pdf'.format(figname=figname))
 
     fig = plt.figure(figsize=(10., 1.))
     ax = fig.add_axes([0.05, 0.25, 0.9, 0.5])  # (left, bottom, width, height )
-    cb = mpl.colorbar.ColorbarBase(ax, cmap='jet', orientation='horizontal')
-    plt.savefig('{figname}_colorbar.png'.format(figname=figname))
+    cb = mpl.colorbar.ColorbarBase(ax, cmap=plt.get_cmap('jet'), orientation='horizontal')
+    plt.savefig('{figname}_colorbar.pdf'.format(figname=figname))
 
 
 def read_thresh_values(filename, mode, bs_m, bs_p):
